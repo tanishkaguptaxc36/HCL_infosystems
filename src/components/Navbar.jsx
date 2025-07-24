@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import logohcl from '../assets/logohcl.png';
-import { Link } from 'react-scroll';
-import Form from '../pages/Form.jsx';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      {/* Navbar - Light Blue and Sticky */}
+      {/* Navbar */}
       <nav className="sticky top-0 z-50 bg-[#cceeff]/80 backdrop-blur-md shadow-md">
         <div className="container mx-auto flex items-center justify-between py-4 px-6">
           {/* Logo */}
@@ -31,27 +30,30 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-6">
             {/* Home with submenu */}
             <div className="relative group">
-              <a href="/"
-               className="text-gray-700 font-medium text-lg border-b-2 border-transparent hover:border-blue-600 cursor-pointer transition-all duration-300">
+              <Link
+                to="/"
+                className="text-gray-700 font-medium text-lg border-b-2 border-transparent hover:border-blue-600 cursor-pointer transition-all duration-300"
+              >
                 Home
-              </a>
+              </Link>
               <div className="absolute top-full left-0 mt-2 w-48 bg-white shadow-md rounded-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform -translate-y-2 transition-all duration-300 z-50">
-                <a href="/investors" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Investors</a>
-                <a href="/publicnotice" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Public Notices</a>
+                <Link to="/investors" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Investors</Link>
+                <Link to="/publicnotice" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Public Notices</Link>
               </div>
             </div>
 
-            <a href="/Team"
+            <Link to="/Team"
               className="text-gray-700 font-medium text-lg border-b-2 border-transparent hover:border-blue-600 cursor-pointer transition-all duration-300">
               Team
-            </a>
-            <a href="/About_us_pg" className="text-gray-700 font-medium text-lg border-b-2 border-transparent hover:border-blue-600 transition-all duration-300">
+            </Link>
+            <Link to="/About_us_pg"
+              className="text-gray-700 font-medium text-lg border-b-2 border-transparent hover:border-blue-600 transition-all duration-300">
               About Us
-            </a>
-            <a href= "/ContactUs"
-            className="text-gray-700 font-medium text-lg border-b-2 border-transparent hover:border-blue-600 transition-all duration-300">
+            </Link>
+            <Link to="/ContactUs"
+              className="text-gray-700 font-medium text-lg border-b-2 border-transparent hover:border-blue-600 transition-all duration-300">
               Contact Us
-           </a>
+            </Link>
             <a
               href="#"
               className="border-b-2 border-transparent hover:border-blue-600 transition-all duration-300 flex items-center"
@@ -82,43 +84,42 @@ export default function Navbar() {
           </svg>
         </button>
 
-        {/* Home with submenu */}
-        <div className="w-full px-6">
-          <div className="text-gray-800 font-bold text-base mb-2"><a href="/">Home</a></div>
-          <div className="ml-4">
-            <a
-              href="/investors"
-              className="text-gray-700 font-semibold text-sm mb-2 block px-4 py-2 rounded-lg hover:bg-blue-200 transition-all duration-300"
-              onClick={() => setOpen(false)}
-            >
-              Investors
-            </a>
-            <a
-              href="/publicnotice"
-              className="text-gray-700 font-semibold text-sm mb-4 block px-4 py-2 rounded-lg hover:bg-blue-200 transition-all duration-300"
-              onClick={() => setOpen(false)}
-            >
-              Public Notice
-            </a>
-          </div>
+        {/* Mobile Menu Items */}
+        <Link to="/" className="text-gray-800 font-bold text-base mb-2 px-6" onClick={() => setOpen(false)}>
+          Home
+        </Link>
+        <div className="ml-4 w-full">
+          <Link to="/investors"
+            className="text-gray-700 font-semibold text-sm mb-2 block px-6 py-2 rounded-lg hover:bg-blue-200 transition-all duration-300"
+            onClick={() => setOpen(false)}
+          >
+            Investors
+          </Link>
+          <Link to="/publicnotice"
+            className="text-gray-700 font-semibold text-sm mb-4 block px-6 py-2 rounded-lg hover:bg-blue-200 transition-all duration-300"
+            onClick={() => setOpen(false)}
+          >
+            Public Notices
+          </Link>
         </div>
-
-        {/* Other Links */}
-        <a
-          href="/About_us_pg"
+        <Link to="/Team"
           className="text-gray-800 font-semibold text-base mb-6 px-6 py-3 rounded-lg hover:bg-blue-200 transition-all duration-300"
           onClick={() => setOpen(false)}
         >
-         About Us      
-           </a>
-        <a
-          href="/ContactUs"
+          Team
+        </Link>
+        <Link to="/About_us_pg"
           className="text-gray-800 font-semibold text-base mb-6 px-6 py-3 rounded-lg hover:bg-blue-200 transition-all duration-300"
           onClick={() => setOpen(false)}
         >
-          Contact us
-        </a>
-        
+          About Us
+        </Link>
+        <Link to="/ContactUs"
+          className="text-gray-800 font-semibold text-base mb-6 px-6 py-3 rounded-lg hover:bg-blue-200 transition-all duration-300"
+          onClick={() => setOpen(false)}
+        >
+          Contact Us
+        </Link>
         <a
           href="#"
           className="mb-6 px-6 py-3 rounded-lg hover:bg-blue-200 transition-all duration-300 flex items-center"
